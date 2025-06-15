@@ -127,6 +127,20 @@ const BackgroundAnimation: React.FC = () => {
 
   return (
     <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden">
+      {/* Subway Surfer video background */}
+      <div className="absolute inset-0 z-0">
+        <video
+          className="object-cover w-full h-full opacity-30"
+          autoPlay
+          loop
+          muted
+          playsInline
+        >
+          <source src="/subway-surfer.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+      </div>
+      
       {/* Chaotic mesh background */}
       <div className="absolute inset-0 mesh-bg"></div>
       <div className="absolute inset-0 mesh-overlay"></div>

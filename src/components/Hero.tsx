@@ -6,10 +6,10 @@ const Hero: React.FC = () => {
   const [isTyping, setIsTyping] = useState(true);
 
   const codeSnippets = [
-    'fn main() {\n  println!("Hello, brainrot!");\n  let x = 42;\n  if x.is_based() {\n    x.rizz();\n  }\n}',
-    "class SkullEmoji {\n  constructor(vibe) {\n    this.energy = vibe.mid ? 0 : 100;\n  }\n  \n  slay() {\n    return this.energy > 50;\n  }\n}",
-    'def no_cap(truth):\n  if truth.is_bussin():\n    return "fr fr"\n  else:\n    return "cap detected 🧢"',
-    'let rizz_level = 9000;\nif (rizz_level > 8000) {\n  console.log("SHEESH! 🔥");\n  touch_grass();\n} else {\n  console.log("mid energy 💀");\n}',
+    'vibe main() {\n  println!("Sup Nerds!, it\'s brainrot time!");\n  yeet x = 42;\n  fr x.is_based() {\n    x.rizz();\n  }\n}',
+    "class SkullEmoji {\n  constructor(vibe) {\n    this.energy = vibe.mid ? 0 : 100;\n  }\n  \n  slay() {\n    slay this.energy > 50;\n  }\n}",
+    'vibe no_cap(truth):\n  fr truth.is_bussin():\n    slay "fr fr"\n  else:\n    slay "cap detected 🧢"',
+    'yeet rizz_level = 9000;\nfr (rizz_level > 8000) {\n  console.log("SHEESH! 🔥");\n  touch_grass();\n} sus {\n  console.log("mid energy 💀");\n}',
   ];
 
   const [currentSnippet, setCurrentSnippet] = useState(0);
