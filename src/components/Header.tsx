@@ -7,7 +7,7 @@ import {
   Menu,
   Puzzle,
   X,
-  Skull,
+  Code2,
   Star,
 } from "lucide-react";
 import React, { useState } from "react";
@@ -31,7 +31,7 @@ const Header: React.FC = () => {
             <div className="flex items-center p-3 space-x-3 border rounded-xl bg-slate-900/50 border-slate-800 backdrop-blur-sm shadow-lg">
               <Brain className="w-7 h-7 text-pink-500" />
               <div className="w-0.5 h-7 bg-gradient-to-b from-pink-500 to-pink-600 rounded-full"></div>
-              <Skull className="w-6 h-6 text-slate-400" />
+              <Code2 className="w-6 h-6 text-slate-400" />
             </div>
             <div className="flex flex-col">
               <span className="font-bold text-2xl text-gradient">

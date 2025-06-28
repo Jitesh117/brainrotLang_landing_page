@@ -82,6 +82,69 @@ Certified based ✅
   const handleEditorDidMount = (editor: monaco.editor.IStandaloneCodeEditor) => {
     editorRef.current = editor;
     
+    // Define custom OneDark-inspired theme
+    monaco.editor.defineTheme('onedark-custom', {
+      base: 'vs-dark',
+      inherit: true,
+      rules: [
+        { token: '', foreground: 'abb2bf' },
+        { token: 'comment', foreground: '5c6370', fontStyle: 'italic' },
+        { token: 'keyword', foreground: 'c678dd' },
+        { token: 'string', foreground: '98c379' },
+        { token: 'number', foreground: 'd19a66' },
+        { token: 'regexp', foreground: '56b6c2' },
+        { token: 'type', foreground: 'e06c75' },
+        { token: 'class', foreground: 'e5c07b' },
+        { token: 'function', foreground: '61afef' },
+        { token: 'variable', foreground: 'e06c75' },
+        { token: 'constant', foreground: 'd19a66' },
+        { token: 'property', foreground: 'e06c75' },
+        { token: 'operator', foreground: '56b6c2' },
+        { token: 'delimiter', foreground: 'abb2bf' },
+        { token: 'tag', foreground: 'e06c75' },
+        { token: 'attribute.name', foreground: 'd19a66' },
+        { token: 'attribute.value', foreground: '98c379' },
+      ],
+      colors: {
+        'editor.background': '#282c34',
+        'editor.foreground': '#abb2bf',
+        'editor.lineHighlightBackground': '#2c313c',
+        'editor.selectionBackground': '#3e4451',
+        'editor.inactiveSelectionBackground': '#3a3f4b',
+        'editorLineNumber.foreground': '#ffffff',
+        'editorLineNumber.activeForeground': '#ffffff',
+        'editorCursor.foreground': '#528bff',
+        'editor.findMatchBackground': '#42557b',
+        'editor.findMatchHighlightBackground': '#314365',
+        'editorWidget.background': '#21252b',
+        'editorWidget.border': '#3e4451',
+        'editorSuggestWidget.background': '#21252b',
+        'editorSuggestWidget.border': '#3e4451',
+        'editorSuggestWidget.selectedBackground': '#2c313c',
+        'editorHoverWidget.background': '#21252b',
+        'editorHoverWidget.border': '#3e4451',
+        'peekView.border': '#528bff',
+        'peekViewEditor.background': '#1b1d23',
+        'peekViewResult.background': '#22262b',
+        'peekViewTitle.background': '#1b1d23',
+        'panel.background': '#21252b',
+        'panelTitle.activeBorder': '#528bff',
+        'statusBar.background': '#21252b',
+        'statusBar.foreground': '#9da5b4',
+        'tab.activeBackground': '#282c34',
+        'tab.activeForeground': '#dcdfe4',
+        'tab.border': '#181a1f',
+        'tab.inactiveBackground': '#21252b',
+        'titleBar.activeBackground': '#21252b',
+        'titleBar.activeForeground': '#9da5b4',
+        'titleBar.inactiveBackground': '#21252b',
+        'titleBar.inactiveForeground': '#6b717d',
+      }
+    });
+
+    // Set the custom theme
+    monaco.editor.setTheme('onedark-custom');
+    
     // Initialize vim mode if enabled
     if (vimMode) {
       initVimMode(editor);
@@ -268,7 +331,7 @@ Certified based ✅
                 value={code}
                 onChange={(value) => setCode(value || "")}
                 onMount={handleEditorDidMount}
-                theme="vs-dark"
+                theme="onedark-custom"
                 options={{
                   fontSize: 15,
                   fontFamily: "JetBrains Mono, Consolas, Monaco, monospace",

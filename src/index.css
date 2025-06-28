@@ -41,35 +41,52 @@ html {
   scroll-behavior: smooth;
 }
 
-/* Monaco Editor overrides */
+/* Monaco Editor overrides for OneDark theme */
 .monaco-editor {
-  background-color: rgba(15, 23, 42, 0.95) !important;
+  background-color: #282c34 !important;
 }
 
 .monaco-editor .margin {
-  background-color: rgba(15, 23, 42, 0.95) !important;
+  background-color: #282c34 !important;
 }
 
 .monaco-editor .current-line {
-  background-color: rgba(236, 72, 153, 0.05) !important;
+  background-color: #2c313c !important;
 }
 
 .monaco-editor .line-numbers {
-  color: rgba(236, 72, 153, 0.4) !important;
+  color: #ffffff !important;
+  font-weight: 500 !important;
+}
+
+.monaco-editor .line-numbers.active-line-number {
+  color: #ffffff !important;
+  font-weight: 600 !important;
 }
 
 .monaco-editor .cursor {
-  color: #ec4899 !important;
+  color: #528bff !important;
 }
 
-/* Enhanced syntax highlighting for modern theme */
-.monaco-editor .mtk1 { color: #f1f5f9 !important; } /* Default text */
-.monaco-editor .mtk2 { color: #ec4899 !important; } /* Keywords */
-.monaco-editor .mtk3 { color: #06b6d4 !important; } /* Strings */
-.monaco-editor .mtk4 { color: #64748b !important; } /* Comments */
-.monaco-editor .mtk5 { color: #f59e0b !important; } /* Numbers */
-.monaco-editor .mtk6 { color: #8b5cf6 !important; } /* Functions */
-.monaco-editor .mtk7 { color: #ec4899 !important; } /* Types */
+.monaco-editor .selected-text {
+  background-color: #3e4451 !important;
+}
+
+.monaco-editor .bracket-match {
+  background-color: #515a6b !important;
+  border: 1px solid #515a6b !important;
+}
+
+/* Enhanced syntax highlighting for OneDark theme */
+.monaco-editor .mtk1 { color: #abb2bf !important; } /* Default text */
+.monaco-editor .mtk2 { color: #c678dd !important; } /* Keywords */
+.monaco-editor .mtk3 { color: #98c379 !important; } /* Strings */
+.monaco-editor .mtk4 { color: #5c6370 !important; } /* Comments */
+.monaco-editor .mtk5 { color: #d19a66 !important; } /* Numbers */
+.monaco-editor .mtk6 { color: #61afef !important; } /* Functions */
+.monaco-editor .mtk7 { color: #e06c75 !important; } /* Types */
+.monaco-editor .mtk8 { color: #e5c07b !important; } /* Classes */
+.monaco-editor .mtk9 { color: #56b6c2 !important; } /* Operators */
 
 /* Modern card styles */
 .card {
