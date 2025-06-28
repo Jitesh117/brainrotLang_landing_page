@@ -41,105 +41,35 @@ html {
   scroll-behavior: smooth;
 }
 
-/* OneDark Theme CSS Variables */
-:root {
-  --onedark-bg: #282c34;
-  --onedark-fg: #abb2bf;
-  --onedark-line-highlight: #2c313c;
-  --onedark-selection: #3e4451;
-  --onedark-line-numbers: #ffffff;
-  --onedark-cursor: #528bff;
-  --onedark-comment: #5c6370;
-  --onedark-keyword: #c678dd;
-  --onedark-string: #98c379;
-  --onedark-number: #d19a66;
-  --onedark-function: #61afef;
-  --onedark-type: #e06c75;
-  --onedark-class: #e5c07b;
-  --onedark-operator: #56b6c2;
+/* Monaco Editor overrides */
+.monaco-editor {
+  background-color: rgba(15, 23, 42, 0.95) !important;
 }
 
-/* Force Monaco Editor OneDark Theme */
-.monaco-editor,
-.monaco-editor .monaco-editor-background,
-.monaco-editor .inputarea.ime-input {
-  background-color: var(--onedark-bg) !important;
-  color: var(--onedark-fg) !important;
-}
-
-.monaco-editor .margin,
-.monaco-editor .monaco-editor .margin {
-  background-color: var(--onedark-bg) !important;
-}
-
-.monaco-editor .current-line,
-.monaco-editor .view-line {
-  background-color: transparent !important;
+.monaco-editor .margin {
+  background-color: rgba(15, 23, 42, 0.95) !important;
 }
 
 .monaco-editor .current-line {
-  background-color: var(--onedark-line-highlight) !important;
+  background-color: rgba(236, 72, 153, 0.05) !important;
 }
 
-.monaco-editor .line-numbers,
-.monaco-editor .line-numbers.active-line-number {
-  color: var(--onedark-line-numbers) !important;
-  font-weight: 500 !important;
+.monaco-editor .line-numbers {
+  color: rgba(255, 255, 255, 0.6) !important;
 }
 
 .monaco-editor .cursor {
-  color: var(--onedark-cursor) !important;
+  color: #ec4899 !important;
 }
 
-.monaco-editor .selected-text,
-.monaco-editor .focused .selected-text {
-  background-color: var(--onedark-selection) !important;
-}
-
-.monaco-editor .bracket-match {
-  background-color: #515a6b !important;
-  border: 1px solid #515a6b !important;
-}
-
-/* Monaco Editor Widget Styling */
-.monaco-editor .suggest-widget,
-.monaco-editor .editor-widget,
-.monaco-editor .monaco-hover {
-  background-color: #21252b !important;
-  border: 1px solid #3e4451 !important;
-  color: var(--onedark-fg) !important;
-}
-
-.monaco-editor .suggest-widget .monaco-list .monaco-list-row.focused {
-  background-color: var(--onedark-line-highlight) !important;
-}
-
-/* Syntax Highlighting for OneDark */
-.monaco-editor .mtk1 { color: var(--onedark-fg) !important; } /* Default text */
-.monaco-editor .mtk2 { color: var(--onedark-keyword) !important; } /* Keywords */
-.monaco-editor .mtk3 { color: var(--onedark-string) !important; } /* Strings */
-.monaco-editor .mtk4 { color: var(--onedark-comment) !important; } /* Comments */
-.monaco-editor .mtk5 { color: var(--onedark-number) !important; } /* Numbers */
-.monaco-editor .mtk6 { color: var(--onedark-function) !important; } /* Functions */
-.monaco-editor .mtk7 { color: var(--onedark-type) !important; } /* Types */
-.monaco-editor .mtk8 { color: var(--onedark-class) !important; } /* Classes */
-.monaco-editor .mtk9 { color: var(--onedark-operator) !important; } /* Operators */
-
-/* Additional token styling */
-.monaco-editor .token.comment { color: var(--onedark-comment) !important; font-style: italic !important; }
-.monaco-editor .token.keyword { color: var(--onedark-keyword) !important; }
-.monaco-editor .token.string { color: var(--onedark-string) !important; }
-.monaco-editor .token.number { color: var(--onedark-number) !important; }
-.monaco-editor .token.function { color: var(--onedark-function) !important; }
-.monaco-editor .token.type { color: var(--onedark-type) !important; }
-.monaco-editor .token.class { color: var(--onedark-class) !important; }
-.monaco-editor .token.operator { color: var(--onedark-operator) !important; }
-
-/* Force override any white backgrounds */
-.monaco-editor .monaco-scrollable-element,
-.monaco-editor .monaco-scrollable-element .monaco-editor-background {
-  background-color: var(--onedark-bg) !important;
-}
+/* Enhanced syntax highlighting for modern theme */
+.monaco-editor .mtk1 { color: #f1f5f9 !important; } /* Default text */
+.monaco-editor .mtk2 { color: #ec4899 !important; } /* Keywords */
+.monaco-editor .mtk3 { color: #06b6d4 !important; } /* Strings */
+.monaco-editor .mtk4 { color: #64748b !important; } /* Comments */
+.monaco-editor .mtk5 { color: #f59e0b !important; } /* Numbers */
+.monaco-editor .mtk6 { color: #8b5cf6 !important; } /* Functions */
+.monaco-editor .mtk7 { color: #ec4899 !important; } /* Types */
 
 /* Modern card styles */
 .card {

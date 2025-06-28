@@ -82,112 +82,6 @@ Certified based ✅
   const handleEditorDidMount = (editor: monaco.editor.IStandaloneCodeEditor) => {
     editorRef.current = editor;
     
-    // Define and apply the Catppuccin Mocha theme
-    monaco.editor.defineTheme('catppuccin-mocha', {
-      base: 'vs-dark',
-      inherit: false,
-      rules: [
-        { token: '', foreground: 'cdd6f4', background: '1e1e2e' },
-        { token: 'comment', foreground: '6c7086', fontStyle: 'italic' },
-        { token: 'keyword', foreground: 'cba6f7', fontStyle: 'bold' },
-        { token: 'keyword.control', foreground: 'cba6f7' },
-        { token: 'keyword.operator', foreground: '89dceb' },
-        { token: 'keyword.other', foreground: 'cba6f7' },
-        { token: 'string', foreground: 'a6e3a1' },
-        { token: 'string.escape', foreground: '89dceb' },
-        { token: 'number', foreground: 'fab387' },
-        { token: 'number.hex', foreground: 'fab387' },
-        { token: 'regexp', foreground: 'a6e3a1' },
-        { token: 'type', foreground: 'f9e2af' },
-        { token: 'type.identifier', foreground: 'f9e2af' },
-        { token: 'class', foreground: 'f9e2af' },
-        { token: 'class.identifier', foreground: 'f9e2af' },
-        { token: 'function', foreground: '89b4fa' },
-        { token: 'function.identifier', foreground: '89b4fa' },
-        { token: 'variable', foreground: 'f38ba8' },
-        { token: 'variable.identifier', foreground: 'f38ba8' },
-        { token: 'constant', foreground: 'fab387' },
-        { token: 'constant.identifier', foreground: 'fab387' },
-        { token: 'property', foreground: 'f38ba8' },
-        { token: 'operator', foreground: '89dceb' },
-        { token: 'delimiter', foreground: 'cdd6f4' },
-        { token: 'delimiter.bracket', foreground: 'cdd6f4' },
-        { token: 'delimiter.parenthesis', foreground: 'cdd6f4' },
-        { token: 'tag', foreground: 'f38ba8' },
-        { token: 'attribute.name', foreground: 'fab387' },
-        { token: 'attribute.value', foreground: 'a6e3a1' },
-        { token: 'identifier', foreground: 'cdd6f4' },
-        { token: 'punctuation', foreground: 'cdd6f4' },
-      ],
-      colors: {
-        'editor.background': '#1e1e2e',
-        'editor.foreground': '#cdd6f4',
-        'editorLineNumber.foreground': '#6c7086',
-        'editorLineNumber.activeForeground': '#f5c2e7',
-        'editor.lineHighlightBackground': '#313244',
-        'editor.selectionBackground': '#585b70',
-        'editor.inactiveSelectionBackground': '#45475a',
-        'editorCursor.foreground': '#f5c2e7',
-        'editor.findMatchBackground': '#74c7ec40',
-        'editor.findMatchHighlightBackground': '#74c7ec30',
-        'editorWidget.background': '#181825',
-        'editorWidget.border': '#585b70',
-        'editorSuggestWidget.background': '#181825',
-        'editorSuggestWidget.border': '#585b70',
-        'editorSuggestWidget.selectedBackground': '#313244',
-        'editorHoverWidget.background': '#181825',
-        'editorHoverWidget.border': '#585b70',
-        'peekView.border': '#89b4fa',
-        'peekViewEditor.background': '#11111b',
-        'peekViewResult.background': '#181825',
-        'peekViewTitle.background': '#11111b',
-        'panel.background': '#181825',
-        'panelTitle.activeBorder': '#89b4fa',
-        'statusBar.background': '#181825',
-        'statusBar.foreground': '#bac2de',
-        'tab.activeBackground': '#1e1e2e',
-        'tab.activeForeground': '#cdd6f4',
-        'tab.border': '#11111b',
-        'tab.inactiveBackground': '#181825',
-        'titleBar.activeBackground': '#181825',
-        'titleBar.activeForeground': '#bac2de',
-        'titleBar.inactiveBackground': '#181825',
-        'titleBar.inactiveForeground': '#6c7086',
-        'editorGutter.background': '#1e1e2e',
-        'editorGutter.modifiedBackground': '#f9e2af',
-        'editorGutter.addedBackground': '#a6e3a1',
-        'editorGutter.deletedBackground': '#f38ba8',
-        'diffEditor.insertedTextBackground': '#a6e3a115',
-        'diffEditor.removedTextBackground': '#f38ba815',
-        'scrollbarSlider.background': '#58576080',
-        'scrollbarSlider.activeBackground': '#74c7ec80',
-        'scrollbarSlider.hoverBackground': '#6c708680',
-        'editorOverviewRuler.border': '#313244',
-        'editorOverviewRuler.findMatchForeground': '#fab387',
-        'editorOverviewRuler.rangeHighlightForeground': '#89b4fa',
-        'editorOverviewRuler.selectionHighlightForeground': '#cdd6f4',
-        'editorOverviewRuler.wordHighlightForeground': '#89dceb',
-        'editorOverviewRuler.wordHighlightStrongForeground': '#cba6f7',
-        'editorOverviewRuler.modifiedForeground': '#f9e2af',
-        'editorOverviewRuler.addedForeground': '#a6e3a1',
-        'editorOverviewRuler.deletedForeground': '#f38ba8',
-        'editorOverviewRuler.errorForeground': '#f38ba8',
-        'editorOverviewRuler.warningForeground': '#f9e2af',
-        'editorOverviewRuler.infoForeground': '#89b4fa',
-        'editorError.foreground': '#f38ba8',
-        'editorWarning.foreground': '#f9e2af',
-        'editorInfo.foreground': '#89b4fa',
-        'editorHint.foreground': '#89dceb',
-        'editorMarkerNavigation.background': '#181825',
-        'editorMarkerNavigationError.background': '#f38ba8',
-        'editorMarkerNavigationWarning.background': '#f9e2af',
-        'editorMarkerNavigationInfo.background': '#89b4fa',
-      }
-    });
-
-    // Apply the theme
-    monaco.editor.setTheme('catppuccin-mocha');
-    
     // Initialize vim mode if enabled
     if (vimMode) {
       initVimMode(editor);
@@ -374,7 +268,7 @@ Certified based ✅
                 value={code}
                 onChange={(value) => setCode(value || "")}
                 onMount={handleEditorDidMount}
-                theme="catppuccin-mocha"
+                theme="vs-dark"
                 options={{
                   fontSize: 15,
                   fontFamily: "JetBrains Mono, Consolas, Monaco, monospace",
