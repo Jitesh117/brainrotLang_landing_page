@@ -82,37 +82,51 @@ Certified based ✅
   const handleEditorDidMount = (editor: monaco.editor.IStandaloneCodeEditor) => {
     editorRef.current = editor;
     
-    // Define custom OneDark theme
-    monaco.editor.defineTheme('onedark-custom', {
+    // Define and apply the OneDark theme
+    monaco.editor.defineTheme('onedark-pro', {
       base: 'vs-dark',
-      inherit: true,
+      inherit: false,
       rules: [
-        { token: '', foreground: 'abb2bf' },
+        { token: '', foreground: 'abb2bf', background: '282c34' },
         { token: 'comment', foreground: '5c6370', fontStyle: 'italic' },
-        { token: 'keyword', foreground: 'c678dd' },
+        { token: 'keyword', foreground: 'c678dd', fontStyle: 'bold' },
+        { token: 'keyword.control', foreground: 'c678dd' },
+        { token: 'keyword.operator', foreground: '56b6c2' },
+        { token: 'keyword.other', foreground: 'c678dd' },
         { token: 'string', foreground: '98c379' },
+        { token: 'string.escape', foreground: '56b6c2' },
         { token: 'number', foreground: 'd19a66' },
-        { token: 'regexp', foreground: '56b6c2' },
-        { token: 'type', foreground: 'e06c75' },
+        { token: 'number.hex', foreground: 'd19a66' },
+        { token: 'regexp', foreground: '98c379' },
+        { token: 'type', foreground: 'e5c07b' },
+        { token: 'type.identifier', foreground: 'e5c07b' },
         { token: 'class', foreground: 'e5c07b' },
+        { token: 'class.identifier', foreground: 'e5c07b' },
         { token: 'function', foreground: '61afef' },
+        { token: 'function.identifier', foreground: '61afef' },
         { token: 'variable', foreground: 'e06c75' },
+        { token: 'variable.identifier', foreground: 'e06c75' },
         { token: 'constant', foreground: 'd19a66' },
+        { token: 'constant.identifier', foreground: 'd19a66' },
         { token: 'property', foreground: 'e06c75' },
         { token: 'operator', foreground: '56b6c2' },
         { token: 'delimiter', foreground: 'abb2bf' },
+        { token: 'delimiter.bracket', foreground: 'abb2bf' },
+        { token: 'delimiter.parenthesis', foreground: 'abb2bf' },
         { token: 'tag', foreground: 'e06c75' },
         { token: 'attribute.name', foreground: 'd19a66' },
         { token: 'attribute.value', foreground: '98c379' },
+        { token: 'identifier', foreground: 'abb2bf' },
+        { token: 'punctuation', foreground: 'abb2bf' },
       ],
       colors: {
         'editor.background': '#282c34',
         'editor.foreground': '#abb2bf',
+        'editorLineNumber.foreground': '#ffffff',
+        'editorLineNumber.activeForeground': '#ffffff',
         'editor.lineHighlightBackground': '#2c313c',
         'editor.selectionBackground': '#3e4451',
         'editor.inactiveSelectionBackground': '#3a3f4b',
-        'editorLineNumber.foreground': '#ffffff',
-        'editorLineNumber.activeForeground': '#ffffff',
         'editorCursor.foreground': '#528bff',
         'editor.findMatchBackground': '#42557b',
         'editor.findMatchHighlightBackground': '#314365',
@@ -139,11 +153,40 @@ Certified based ✅
         'titleBar.activeForeground': '#9da5b4',
         'titleBar.inactiveBackground': '#21252b',
         'titleBar.inactiveForeground': '#6b717d',
+        'editorGutter.background': '#282c34',
+        'editorGutter.modifiedBackground': '#e5c07b',
+        'editorGutter.addedBackground': '#98c379',
+        'editorGutter.deletedBackground': '#e06c75',
+        'diffEditor.insertedTextBackground': '#98c37915',
+        'diffEditor.removedTextBackground': '#e06c7515',
+        'scrollbarSlider.background': '#4e566680',
+        'scrollbarSlider.activeBackground': '#747d9180',
+        'scrollbarSlider.hoverBackground': '#5a637580',
+        'editorOverviewRuler.border': '#2c313c',
+        'editorOverviewRuler.findMatchForeground': '#d19a66',
+        'editorOverviewRuler.rangeHighlightForeground': '#61afef',
+        'editorOverviewRuler.selectionHighlightForeground': '#abb2bf',
+        'editorOverviewRuler.wordHighlightForeground': '#56b6c2',
+        'editorOverviewRuler.wordHighlightStrongForeground': '#c678dd',
+        'editorOverviewRuler.modifiedForeground': '#e5c07b',
+        'editorOverviewRuler.addedForeground': '#98c379',
+        'editorOverviewRuler.deletedForeground': '#e06c75',
+        'editorOverviewRuler.errorForeground': '#e06c75',
+        'editorOverviewRuler.warningForeground': '#e5c07b',
+        'editorOverviewRuler.infoForeground': '#61afef',
+        'editorError.foreground': '#e06c75',
+        'editorWarning.foreground': '#e5c07b',
+        'editorInfo.foreground': '#61afef',
+        'editorHint.foreground': '#56b6c2',
+        'editorMarkerNavigation.background': '#21252b',
+        'editorMarkerNavigationError.background': '#e06c75',
+        'editorMarkerNavigationWarning.background': '#e5c07b',
+        'editorMarkerNavigationInfo.background': '#61afef',
       }
     });
 
-    // Set the custom theme
-    monaco.editor.setTheme('onedark-custom');
+    // Apply the theme
+    monaco.editor.setTheme('onedark-pro');
     
     // Initialize vim mode if enabled
     if (vimMode) {
@@ -331,7 +374,7 @@ Certified based ✅
                 value={code}
                 onChange={(value) => setCode(value || "")}
                 onMount={handleEditorDidMount}
-                theme="onedark-custom"
+                theme="onedark-pro"
                 options={{
                   fontSize: 15,
                   fontFamily: "JetBrains Mono, Consolas, Monaco, monospace",
