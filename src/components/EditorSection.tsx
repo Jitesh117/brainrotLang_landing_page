@@ -18,73 +18,59 @@ import React, { useState, useRef, useEffect } from "react";
 import * as monaco from "monaco-editor";
 
 const EditorSection: React.FC = () => {
-  const [code, setCode] = useState(`// Welcome to Brainrot! 🧠💀
-fn main() {
-    let vibe = "immaculate";
-    let energy = 100;
-    
-    if vibe.is_bussin() {
-        println!("No cap, this is fire! 🔥");
-        energy.rizz_up();
-    } else {
-        println!("Mid energy detected 💀");
-        energy.touch_grass();
-    }
-    
-    // Let's get this bread fr fr
-    let success = energy.slay();
-    success.periodt();
-    
-    // Ohio moment
-    if energy > 9000 {
-        println!("SHEESH! That's some sigma energy! 🗿");
-    }
-}
+  const [code, setCode] = useState(`// variable declarations
+yeet name = "brainrot";
+yeet isCool = based;
+yeet count = 3;
 
-// Custom trait for maximum brainrot
-trait Rizz {
-    fn is_bussin(&self) -> bool;
-    fn slay(&self) -> bool;
-    fn periodt(&self);
-    fn touch_grass(&self);
-    fn rizz_up(&mut self);
-}
+// function definition with conditionals
+vibe checkCoolness = fn(flag) {
+	fr (flag) {
+		slay "Certified based ✅";
+	} sus {
+		slay "Cap detected ❌";
+	}
+};
 
-impl Rizz for i32 {
-    fn is_bussin(&self) -> bool {
-        *self > 50 // no cap
-    }
-    
-    fn slay(&self) -> bool {
-        *self >= 100 // periodt
-    }
-    
-    fn periodt(&self) {
-        println!("And that's on periodt! ✨");
-    }
-    
-    fn touch_grass(&self) {
-        println!("Time to touch some grass bestie 🌱");
-    }
-    
-    fn rizz_up(&mut self) {
-        *self += 50; // level up that energy
-    }
-}`);
+// arrays
+yeet nums = [1, 2, 3];
+yeet second = nums[1];  // should be 2
+
+// hash tables (objects/maps)
+yeet profile = {
+	"username": name,
+	"followers": 1337,
+	"verified": based
+};
+
+// indexing into a hash
+yeet username = profile["username"];
+
+// function that returns another function (vibes)
+vibe multiplier = fn(n) {
+	slay fn(x) { slay x * n; };
+};
+
+yeet timesTwo = multiplier(2);
+yeet result = timesTwo(5);  // 10
+
+// final check
+checkCoolness(profile["verified"]);`);
 
   const [output, setOutput] =
     useState(`🔥 Compilation successful! No cap detected.
 
-No cap, this is fire! 🔥
-SHEESH! That's some sigma energy! 🗿
-And that's on periodt! ✨
+Certified based ✅
 
 ✨ Program executed successfully
-⚡ 0.002s runtime (that's bussin)
+⚡ 0.001s runtime (that's bussin)
 🧠 Brainrot level: MAXIMUM OVERDRIVE
 🗿 Ohio factor: CRITICAL
 💀 Skull count: 42
-🔥 Fire detected: TRUE`);
+🔥 Fire detected: TRUE
+📊 Variables declared: 8
+🎯 Functions defined: 2
+🚀 Rizz level: OVER 9000`);
 
   const [isRunning, setIsRunning] = useState(false);
   const [copied, setCopied] = useState(false);
@@ -169,6 +155,9 @@ And that's on periodt! ✨
         "\n\n✨ Periodt energy: IMMACULATE",
         "\n\n🚀 Rizz level: OVER 9000",
         "\n\n🎯 Based factor: CONFIRMED",
+        "\n\n📊 Hash table accessed successfully",
+        "\n\n🎪 Function closure created",
+        "\n\n⚡ Array indexing: FLAWLESS",
       ];
       const randomOutput =
         chaoticOutputs[Math.floor(Math.random() * chaoticOutputs.length)];
@@ -351,7 +340,7 @@ And that's on periodt! ✨
                   <Terminal className="w-6 h-6 text-pink-500" />
                   <span>Output Console</span>
                   <div className="flex items-center space-x-2 ml-auto">
-                    <AlertCircle className="w-4 h-4 text-green-500" />
+                    <CheckCircle className="w-4 h-4 text-green-500" />
                     <span className="text-xs text-slate-500 font-mono">NO ERRORS</span>
                   </div>
                 </h3>
