@@ -171,7 +171,7 @@ And that's on periodt! ✨
                 defaultLanguage="rust"
                 value={code}
                 onChange={(value) => setCode(value || "")}
-                theme="catppuccin-mocha"
+                theme="vs-dark"
                 options={{
                   fontSize: 15,
                   fontFamily: "JetBrains Mono, Consolas, Monaco, monospace",
@@ -191,6 +191,9 @@ And that's on periodt! ✨
                   suggestOnTriggerCharacters: true,
                   quickSuggestions: true,
                   parameterHints: { enabled: true },
+                  colorDecorators: true,
+                  cursorBlinking: "smooth",
+                  cursorSmoothCaretAnimation: "on",
                 }}
               />
 

@@ -7,7 +7,7 @@ import {
   Menu,
   Puzzle,
   X,
-  Zap,
+  Skull,
 } from "lucide-react";
 import React, { useState } from "react";
 
@@ -35,7 +35,7 @@ const Header: React.FC = () => {
               <div className="relative flex items-center p-2 space-x-2 border rounded-xl bg-gray-800/50 border-pink-500/30 backdrop-blur-sm">
                 <Brain className="w-8 h-8 text-pink-400 animate-pulse" />
                 <div className="w-1 h-8 bg-gradient-to-b from-pink-400 to-cyan-400 rounded-full animate-pulse"></div>
-                <Zap className="w-6 h-6 text-cyan-400 animate-bounce" />
+                <Skull className="w-6 h-6 text-cyan-400 animate-bounce" />
               </div>
             </div>
             <div className="flex flex-col">

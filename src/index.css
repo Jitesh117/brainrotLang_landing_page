@@ -41,16 +41,46 @@ html {
 
 /* Monaco Editor overrides */
 .monaco-editor {
-  background-color: rgba(17, 24, 39, 0.8) !important;
+  background-color: rgba(17, 24, 39, 0.95) !important;
 }
 
 .monaco-editor .margin {
-  background-color: rgba(17, 24, 39, 0.8) !important;
+  background-color: rgba(17, 24, 39, 0.95) !important;
 }
+
+.monaco-editor .current-line {
+  background-color: rgba(255, 20, 147, 0.1) !important;
+}
+
+.monaco-editor .line-numbers {
+  color: rgba(255, 105, 180, 0.6) !important;
+}
+
+.monaco-editor .cursor {
+  color: #ff1493 !important;
+}
+
+/* Custom syntax highlighting for brainrot theme */
+.monaco-editor .mtk1 { color: #e5e7eb !important; } /* Default text */
+.monaco-editor .mtk2 { color: #ff1493 !important; } /* Keywords */
+.monaco-editor .mtk3 { color: #00ffff !important; } /* Strings */
+.monaco-editor .mtk4 { color: #39ff14 !important; } /* Comments */
+.monaco-editor .mtk5 { color: #ffff00 !important; } /* Numbers */
+.monaco-editor .mtk6 { color: #ff6900 !important; } /* Functions */
+.monaco-editor .mtk7 { color: #c71585 !important; } /* Types */
 
 /* Ensure text is always visible */
 .text-shadow {
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+/* Neon glow effects */
+.neon-glow {
+  text-shadow: 0 0 5px currentColor, 0 0 10px currentColor, 0 0 15px currentColor;
+}
+
+.neon-border {
+  box-shadow: 0 0 5px currentColor, 0 0 10px currentColor, inset 0 0 5px currentColor;
 }
 
 /* Animation keyframes */
