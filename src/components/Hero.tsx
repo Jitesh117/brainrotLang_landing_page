@@ -1,4 +1,4 @@
-import { Github, Play, Sparkles, Zap } from "lucide-react";
+import { Github, Play, Sparkles } from "lucide-react";
 import React, { useEffect, useState } from "react";
 
 const Hero: React.FC = () => {
@@ -22,7 +22,7 @@ const Hero: React.FC = () => {
       if (index < snippet.length) {
         setDisplayText(snippet.substring(0, index + 1));
         index++;
-        setTimeout(typeText, 40); // Constant typing speed
+        setTimeout(typeText, 40);
       } else {
         setTimeout(() => {
           setIsTyping(false);
@@ -43,94 +43,76 @@ const Hero: React.FC = () => {
   return (
     <section className="relative z-10 flex items-center justify-center min-h-screen px-4 sm:px-6 lg:px-8">
       <div className="max-w-6xl mx-auto text-center">
-        {/* Chaotic Hero Title */}
+        {/* Hero Title */}
         <div className="mb-8">
-          <h1 className="mb-4 text-4xl font-bold sm:text-6xl lg:text-8xl">
-            <span className="font-mono text-pink-400">Brainrot</span>
+          <h1 className="mb-6 text-4xl font-bold sm:text-6xl lg:text-7xl">
+            <span className="text-gradient font-mono">Brainrot</span>
             <br />
-            <span className="text-white text-shadow">Programming Language</span>
+            <span className="text-slate-100">Programming Language</span>
           </h1>
-          <p className="mb-2 font-mono text-xl sm:text-3xl text-cyan-400 neon-glow">
+          <p className="mb-3 text-xl sm:text-2xl text-slate-300 font-medium">
             Unleash the Brainrot.
           </p>
-          <p className="font-mono text-lg text-gray-300">
+          <p className="text-lg text-slate-400 max-w-2xl mx-auto">
             A language so cursed, it's{" "}
-            <span className="text-pink-400">beautiful</span>.
+            <span className="text-pink-400 font-medium">beautiful</span>.
+            Write code that's both functional and absolutely unhinged.
           </p>
         </div>
 
-        {/* Chaotic Code Animation */}
-        <div className="max-w-3xl mx-auto mb-12">
-          <div className="relative p-6 overflow-hidden border-2 shadow-2xl bg-gray-900/70 backdrop-blur-sm rounded-xl border-pink-500/50 neon-border">
-            {/* Animated background pattern */}
-            <div className="absolute inset-0 opacity-10">
-              <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-pink-500/20 to-cyan-500/20 animate-pulse"></div>
-            </div>
-
-            <div className="relative z-10 flex items-center justify-between mb-4">
+        {/* Code Animation */}
+        <div className="max-w-4xl mx-auto mb-12">
+          <div className="card p-6">
+            <div className="flex items-center justify-between mb-4">
               <div className="flex space-x-2">
                 <div className="w-3 h-3 bg-red-500 rounded-full"></div>
                 <div className="w-3 h-3 bg-yellow-500 rounded-full"></div>
                 <div className="w-3 h-3 bg-green-500 rounded-full"></div>
               </div>
-              <div className="flex items-center space-x-2 font-mono text-sm text-pink-400">
+              <div className="flex items-center space-x-2 text-sm text-slate-400 font-mono">
                 <Sparkles className="w-4 h-4" />
                 <span>brainrot.exe</span>
-                <Zap className="w-4 h-4" />
               </div>
             </div>
-            <div className="relative z-10 text-left">
-              <pre className="font-mono text-sm text-gray-100 whitespace-pre-wrap sm:text-base">
+            <div className="text-left">
+              <pre className="font-mono text-sm text-slate-100 whitespace-pre-wrap sm:text-base">
                 <code>{displayText}</code>
-                <span className="text-pink-400 animate-pulse">█</span>
+                <span className="text-pink-500 animate-pulse">█</span>
               </pre>
             </div>
           </div>
         </div>
 
-        {/* Chaotic CTA Buttons */}
-        <div className="flex flex-col items-center justify-center gap-6 mb-12 sm:flex-row">
-          <button className="relative px-10 py-5 font-mono text-lg font-bold text-white transition-all duration-300 transform bg-pink-500 group hover:bg-pink-600 rounded-xl hover:shadow-lg hover:shadow-pink-500/50 hover:-translate-y-2">
-            <div className="flex items-center space-x-3">
-              <Play className="w-6 h-6" />
-              <span>Try in Editor</span>
-            </div>
-            <div className="absolute w-3 h-3 rounded-full -top-1 -right-1 bg-cyan-400"></div>
+        {/* CTA Buttons */}
+        <div className="flex flex-col items-center justify-center gap-4 mb-16 sm:flex-row">
+          <button className="btn-primary flex items-center space-x-2 text-lg">
+            <Play className="w-5 h-5" />
+            <span>Try in Editor</span>
           </button>
 
-          <button className="px-10 py-5 font-mono text-lg font-bold transition-all duration-300 transform group border-3 border-cyan-400 rounded-xl text-cyan-400 hover:bg-cyan-400 hover:text-gray-900 hover:shadow-lg hover:shadow-cyan-400/50 hover:-translate-y-2">
-            <div className="flex items-center space-x-3">
-              <Github className="w-6 h-6" />
-              <span>View on GitHub</span>
-            </div>
+          <button className="btn-secondary flex items-center space-x-2 text-lg">
+            <Github className="w-5 h-5" />
+            <span>View on GitHub</span>
           </button>
         </div>
 
-        {/* Chaotic Stats */}
+        {/* Stats */}
         <div className="grid grid-cols-2 gap-8 text-center sm:grid-cols-4">
-          <div className="transition-transform duration-300 transform hover:scale-110">
-            <div className="font-mono text-3xl font-bold text-pink-400">
-              1337+
-            </div>
-            <div className="font-mono text-gray-300">Based Lines</div>
+          <div className="card card-hover p-6">
+            <div className="text-3xl font-bold text-pink-500 mb-2">1337+</div>
+            <div className="text-slate-400 font-mono text-sm">Based Lines</div>
           </div>
-          <div className="transition-transform duration-300 transform hover:scale-110">
-            <div className="font-mono text-3xl font-bold text-cyan-400">
-              420+
-            </div>
-            <div className="font-mono text-gray-300">No Cap Functions</div>
+          <div className="card card-hover p-6">
+            <div className="text-3xl font-bold text-pink-500 mb-2">420+</div>
+            <div className="text-slate-400 font-mono text-sm">No Cap Functions</div>
           </div>
-          <div className="transition-transform duration-300 transform hover:scale-110">
-            <div className="font-mono text-3xl font-bold text-green-400">
-              69+
-            </div>
-            <div className="font-mono text-gray-300">Rizz Operators</div>
+          <div className="card card-hover p-6">
+            <div className="text-3xl font-bold text-pink-500 mb-2">69+</div>
+            <div className="text-slate-400 font-mono text-sm">Rizz Operators</div>
           </div>
-          <div className="transition-transform duration-300 transform hover:scale-110">
-            <div className="font-mono text-3xl font-bold text-yellow-400">
-              ∞
-            </div>
-            <div className="font-mono text-gray-300">Brainrot Potential</div>
+          <div className="card card-hover p-6">
+            <div className="text-3xl font-bold text-pink-500 mb-2">∞</div>
+            <div className="text-slate-400 font-mono text-sm">Brainrot Potential</div>
           </div>
         </div>
       </div>

@@ -41,46 +41,55 @@ html {
 
 /* Monaco Editor overrides */
 .monaco-editor {
-  background-color: rgba(17, 24, 39, 0.95) !important;
+  background-color: rgba(15, 23, 42, 0.95) !important;
 }
 
 .monaco-editor .margin {
-  background-color: rgba(17, 24, 39, 0.95) !important;
+  background-color: rgba(15, 23, 42, 0.95) !important;
 }
 
 .monaco-editor .current-line {
-  background-color: rgba(255, 20, 147, 0.1) !important;
+  background-color: rgba(236, 72, 153, 0.05) !important;
 }
 
 .monaco-editor .line-numbers {
-  color: rgba(255, 105, 180, 0.6) !important;
+  color: rgba(236, 72, 153, 0.4) !important;
 }
 
 .monaco-editor .cursor {
-  color: #ff1493 !important;
+  color: #ec4899 !important;
 }
 
-/* Custom syntax highlighting for brainrot theme */
-.monaco-editor .mtk1 { color: #e5e7eb !important; } /* Default text */
-.monaco-editor .mtk2 { color: #ff1493 !important; } /* Keywords */
-.monaco-editor .mtk3 { color: #00ffff !important; } /* Strings */
-.monaco-editor .mtk4 { color: #39ff14 !important; } /* Comments */
-.monaco-editor .mtk5 { color: #ffff00 !important; } /* Numbers */
-.monaco-editor .mtk6 { color: #ff6900 !important; } /* Functions */
-.monaco-editor .mtk7 { color: #c71585 !important; } /* Types */
+/* Custom syntax highlighting for modern theme */
+.monaco-editor .mtk1 { color: #f1f5f9 !important; } /* Default text */
+.monaco-editor .mtk2 { color: #ec4899 !important; } /* Keywords */
+.monaco-editor .mtk3 { color: #06b6d4 !important; } /* Strings */
+.monaco-editor .mtk4 { color: #64748b !important; } /* Comments */
+.monaco-editor .mtk5 { color: #f59e0b !important; } /* Numbers */
+.monaco-editor .mtk6 { color: #8b5cf6 !important; } /* Functions */
+.monaco-editor .mtk7 { color: #ec4899 !important; } /* Types */
 
-/* Ensure text is always visible */
-.text-shadow {
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+/* Modern card styles */
+.card {
+  @apply bg-slate-900/80 backdrop-blur-sm border border-slate-800 rounded-xl;
 }
 
-/* Neon glow effects */
-.neon-glow {
-  text-shadow: 0 0 5px currentColor, 0 0 10px currentColor, 0 0 15px currentColor;
+.card-hover {
+  @apply transition-all duration-200 hover:bg-slate-900/90 hover:border-slate-700;
 }
 
-.neon-border {
-  box-shadow: 0 0 5px currentColor, 0 0 10px currentColor, inset 0 0 5px currentColor;
+/* Button styles */
+.btn-primary {
+  @apply bg-pink-500 hover:bg-pink-600 text-white font-medium px-6 py-3 rounded-lg transition-all duration-200 hover:shadow-lg hover:shadow-pink-500/25;
+}
+
+.btn-secondary {
+  @apply bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 hover:border-slate-600 font-medium px-6 py-3 rounded-lg transition-all duration-200;
+}
+
+/* Text styles */
+.text-gradient {
+  @apply bg-gradient-to-r from-pink-400 to-pink-600 bg-clip-text text-transparent;
 }
 
 /* Animation keyframes */
@@ -93,50 +102,10 @@ html {
   animation: float 3s ease-in-out infinite;
 }
 
-/* Chaotic mesh background animation */
-@keyframes mesh-move {
-  0% { transform: translate(0, 0) rotate(0deg); }
-  25% { transform: translate(100px, -50px) rotate(90deg); }
-  50% { transform: translate(-50px, 100px) rotate(180deg); }
-  75% { transform: translate(-100px, -100px) rotate(270deg); }
-  100% { transform: translate(0, 0) rotate(360deg); }
-}
-
-@keyframes mesh-pulse {
-  0%, 100% { opacity: 0.3; }
-  50% { opacity: 0.7; }
-}
-
-@keyframes mesh-scale {
-  0%, 100% { transform: scale(1); }
-  50% { transform: scale(1.2); }
-}
-
-.mesh-bg {
-  background: 
-    radial-gradient(circle at 20% 80%, rgba(255, 20, 147, 0.4) 0%, transparent 50%),
-    radial-gradient(circle at 80% 20%, rgba(255, 0, 255, 0.3) 0%, transparent 50%),
-    radial-gradient(circle at 40% 40%, rgba(255, 105, 180, 0.2) 0%, transparent 50%),
-    radial-gradient(circle at 60% 60%, rgba(199, 21, 133, 0.3) 0%, transparent 50%),
-    linear-gradient(135deg, rgba(255, 20, 147, 0.1) 0%, rgba(138, 43, 226, 0.1) 100%);
-  animation: mesh-pulse 4s ease-in-out infinite;
-}
-
-.mesh-overlay {
-  background: 
-    repeating-linear-gradient(
-      45deg,
-      transparent,
-      transparent 2px,
-      rgba(255, 20, 147, 0.05) 2px,
-      rgba(255, 20, 147, 0.05) 4px
-    ),
-    repeating-linear-gradient(
-      -45deg,
-      transparent,
-      transparent 2px,
-      rgba(255, 0, 255, 0.03) 2px,
-      rgba(255, 0, 255, 0.03) 4px
-    );
-  animation: mesh-move 20s linear infinite;
+/* Subtle background effects */
+.bg-grid {
+  background-image: 
+    linear-gradient(rgba(236, 72, 153, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(236, 72, 153, 0.03) 1px, transparent 1px);
+  background-size: 20px 20px;
 }

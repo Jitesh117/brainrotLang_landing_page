@@ -5,14 +5,12 @@ export default {
     extend: {
       fontFamily: {
         'sans': ['Inter', 'ui-sans-serif', 'system-ui'],
-        'mono': ['Consolas', 'Monaco', 'Courier New', 'monospace'],
-        'comic': ['Comic Sans MS', 'cursive'],
+        'mono': ['JetBrains Mono', 'Consolas', 'Monaco', 'monospace'],
       },
       colors: {
-        'neon-cyan': '#00ffff',
-        'neon-pink': '#ff006e',
-        'neon-green': '#39ff14',
-        'neon-yellow': '#ffff00',
+        slate: {
+          950: '#0f172a',
+        },
       },
       animation: {
         'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
