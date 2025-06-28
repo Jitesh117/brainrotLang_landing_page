@@ -10,8 +10,12 @@ import {
   Zap,
   CheckCircle,
   AlertCircle,
+  Keyboard,
+  ToggleLeft,
+  ToggleRight,
 } from "lucide-react";
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
+import * as monaco from "monaco-editor";
 
 const EditorSection: React.FC = () => {
   const [code, setCode] = useState(`// Welcome to Brainrot! 🧠💀
@@ -84,6 +88,73 @@ And that's on periodt! ✨
 
   const [isRunning, setIsRunning] = useState(false);
   const [copied, setCopied] = useState(false);
+  const [vimMode, setVimMode] = useState(false);
+  const [vimStatusLine, setVimStatusLine] = useState("-- INSERT --");
+  const editorRef = useRef<monaco.editor.IStandaloneCodeEditor | null>(null);
+  const vimModeRef = useRef<any>(null);
+
+  const handleEditorDidMount = (editor: monaco.editor.IStandaloneCodeEditor) => {
+    editorRef.current = editor;
+    
+    // Initialize vim mode if enabled
+    if (vimMode) {
+      initVimMode(editor);
+    }
+  };
+
+  const initVimMode = async (editor: monaco.editor.IStandaloneCodeEditor) => {
+    try {
+      const { initVimMode } = await import('monaco-vim');
+      
+      if (vimModeRef.current) {
+        vimModeRef.current.dispose();
+      }
+      
+      vimModeRef.current = initVimMode(editor, document.getElementById('vim-status-line'));
+      
+      // Listen to vim mode changes
+      vimModeRef.current.on('vim-mode-change', (mode: any) => {
+        const modeMap: { [key: string]: string } = {
+          'normal': '-- NORMAL --',
+          'insert': '-- INSERT --',
+          'visual': '-- VISUAL --',
+          'replace': '-- REPLACE --',
+        };
+        setVimStatusLine(modeMap[mode.mode] || `-- ${mode.mode.toUpperCase()} --`);
+      });
+      
+      // Set initial status
+      setVimStatusLine("-- NORMAL --");
+    } catch (error) {
+      console.error('Failed to initialize vim mode:', error);
+      setVimMode(false);
+    }
+  };
+
+  const toggleVimMode = async () => {
+    const newVimMode = !vimMode;
+    setVimMode(newVimMode);
+    
+    if (editorRef.current) {
+      if (newVimMode) {
+        await initVimMode(editorRef.current);
+      } else {
+        if (vimModeRef.current) {
+          vimModeRef.current.dispose();
+          vimModeRef.current = null;
+        }
+        setVimStatusLine("-- INSERT --");
+      }
+    }
+  };
+
+  useEffect(() => {
+    return () => {
+      if (vimModeRef.current) {
+        vimModeRef.current.dispose();
+      }
+    };
+  }, []);
 
   const handleRun = () => {
     setIsRunning(true);
@@ -162,6 +233,23 @@ And that's on periodt! ✨
             </div>
 
             <div className="flex items-center space-x-3">
+              {/* Vim Mode Toggle */}
+              <div className="flex items-center space-x-2 px-3 py-2 rounded-lg bg-slate-800/50 border border-slate-700">
+                <Keyboard className="w-4 h-4 text-slate-400" />
+                <span className="text-xs text-slate-400 font-mono">VIM</span>
+                <button
+                  onClick={toggleVimMode}
+                  className="text-slate-400 hover:text-slate-200 transition-colors duration-200"
+                  title={vimMode ? "Disable Vim keybindings" : "Enable Vim keybindings"}
+                >
+                  {vimMode ? (
+                    <ToggleRight className="w-5 h-5 text-pink-500" />
+                  ) : (
+                    <ToggleLeft className="w-5 h-5" />
+                  )}
+                </button>
+              </div>
+
               <button
                 onClick={handleCopy}
                 className="group p-3 text-slate-400 transition-all duration-200 rounded-lg hover:text-slate-200 hover:bg-slate-800 relative"
@@ -190,6 +278,7 @@ And that's on periodt! ✨
                 defaultLanguage="rust"
                 value={code}
                 onChange={(value) => setCode(value || "")}
+                onMount={handleEditorDidMount}
                 theme="vs-dark"
                 options={{
                   fontSize: 15,
@@ -217,6 +306,18 @@ And that's on periodt! ✨
                   mouseWheelZoom: true,
                 }}
               />
+
+              {/* Vim Status Line */}
+              {vimMode && (
+                <div className="absolute bottom-0 left-0 right-0 bg-slate-900 border-t border-slate-700 px-4 py-2">
+                  <div 
+                    id="vim-status-line" 
+                    className="font-mono text-sm text-pink-400"
+                  >
+                    {vimStatusLine}
+                  </div>
+                </div>
+              )}
 
               {/* Run Button - Enhanced */}
               <div className="absolute top-6 right-6">
@@ -255,7 +356,7 @@ And that's on periodt! ✨
                   </div>
                 </h3>
               </div>
-              <div className="p-8 h-[602px] overflow-y-auto">
+              <div className={`p-8 overflow-y-auto ${vimMode ? 'h-[564px]' : 'h-[602px]'}`}>
                 <pre className="font-mono text-sm text-slate-300 whitespace-pre-wrap leading-relaxed">
                   {output}
                 </pre>
@@ -284,15 +385,15 @@ And that's on periodt! ✨
           <div className="card card-hover p-10 group">
             <div className="flex items-center mb-8 space-x-4">
               <div className="p-4 rounded-xl bg-pink-500/10 border border-pink-500/20 group-hover:bg-pink-500/20 transition-colors duration-300">
-                <Play className="w-8 h-8 text-pink-500 group-hover:scale-110 transition-transform duration-200" />
+                <Keyboard className="w-8 h-8 text-pink-500 group-hover:scale-110 transition-transform duration-200" />
               </div>
               <h3 className="text-2xl font-semibold text-slate-200">
-                Instant Execution
+                Vim Keybindings
               </h3>
             </div>
             <p className="text-slate-400 leading-relaxed text-lg">
-              Compile and run your brainrot code instantly in the browser with
-              zero setup required. No cap, it just works!
+              Full Vim keybinding support with modal editing, visual mode, and all
+              your favorite Vim commands. Toggle on/off as needed.
             </p>
           </div>
 
