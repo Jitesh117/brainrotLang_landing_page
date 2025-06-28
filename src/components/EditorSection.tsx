@@ -260,7 +260,7 @@ Certified based ✅
           </div>
 
           <div className="grid gap-0 lg:grid-cols-2">
-            {/* Code Editor - Enhanced */}
+            {/* Code Editor - Enhanced with minimap */}
             <div className="relative">
               <Editor
                 height="650px"
@@ -272,7 +272,14 @@ Certified based ✅
                 options={{
                   fontSize: 15,
                   fontFamily: "JetBrains Mono, Consolas, Monaco, monospace",
-                  minimap: { enabled: false },
+                  minimap: { 
+                    enabled: true,
+                    side: 'right',
+                    showSlider: 'always',
+                    renderCharacters: true,
+                    maxColumn: 120,
+                    scale: 1
+                  },
                   scrollBeyondLastLine: false,
                   automaticLayout: true,
                   tabSize: 2,
@@ -307,9 +314,21 @@ Certified based ✅
                   </div>
                 </div>
               )}
+            </div>
 
-              {/* Run Button - Enhanced */}
-              <div className="absolute top-6 right-6">
+            {/* Output Panel - Enhanced with Run button in header */}
+            <div className="border-t border-l-0 lg:border-l lg:border-t-0 border-slate-800 bg-slate-950/70">
+              <div className="flex items-center justify-between p-6 border-b border-slate-800 bg-slate-900/30">
+                <div className="flex items-center space-x-3">
+                  <Terminal className="w-6 h-6 text-pink-500" />
+                  <span className="text-lg font-semibold text-slate-200">Output Console</span>
+                  <div className="flex items-center space-x-2">
+                    <CheckCircle className="w-4 h-4 text-green-500" />
+                    <span className="text-xs text-slate-500 font-mono">NO ERRORS</span>
+                  </div>
+                </div>
+                
+                {/* Run Button - Moved to output console header */}
                 <button
                   onClick={handleRun}
                   disabled={isRunning}
@@ -330,20 +349,6 @@ Certified based ✅
                   </div>
                   <div className="absolute inset-0 bg-gradient-to-r from-pink-600 to-pink-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                 </button>
-              </div>
-            </div>
-
-            {/* Output Panel - Enhanced */}
-            <div className="border-t border-l-0 lg:border-l lg:border-t-0 border-slate-800 bg-slate-950/70">
-              <div className="p-6 border-b border-slate-800 bg-slate-900/30">
-                <h3 className="flex items-center space-x-3 text-lg font-semibold text-slate-200">
-                  <Terminal className="w-6 h-6 text-pink-500" />
-                  <span>Output Console</span>
-                  <div className="flex items-center space-x-2 ml-auto">
-                    <CheckCircle className="w-4 h-4 text-green-500" />
-                    <span className="text-xs text-slate-500 font-mono">NO ERRORS</span>
-                  </div>
-                </h3>
               </div>
               <div className={`p-8 overflow-y-auto ${vimMode ? 'h-[564px]' : 'h-[602px]'}`}>
                 <pre className="font-mono text-sm text-slate-300 whitespace-pre-wrap leading-relaxed">
