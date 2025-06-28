@@ -31,18 +31,18 @@ const BackgroundAnimation: React.FC = () => {
   useEffect(() => {
     // Initialize subtle floating texts
     const initialTexts: FloatingText[] = [];
-    for (let i = 0; i < 15; i++) {
+    for (let i = 0; i < 12; i++) {
       initialTexts.push({
         id: i,
         text: brainrotSlangs[Math.floor(Math.random() * brainrotSlangs.length)],
         x: Math.random() * (window.innerWidth + 200) - 100,
         y: Math.random() * (window.innerHeight + 200) - 100,
-        vx: (Math.random() * 1 + 0.5) * (Math.random() > 0.5 ? 1 : -1),
-        vy: (Math.random() * 1 + 0.5) * (Math.random() > 0.5 ? 1 : -1),
-        opacity: Math.random() * 0.1 + 0.05,
-        size: Math.random() * 0.5 + 0.8,
+        vx: (Math.random() * 0.8 + 0.3) * (Math.random() > 0.5 ? 1 : -1),
+        vy: (Math.random() * 0.8 + 0.3) * (Math.random() > 0.5 ? 1 : -1),
+        opacity: Math.random() * 0.08 + 0.03,
+        size: Math.random() * 0.4 + 0.6,
         rotation: Math.random() * 360,
-        rotationSpeed: (Math.random() * 1 - 0.5) * 0.2,
+        rotationSpeed: (Math.random() * 1 - 0.5) * 0.15,
       });
     }
     setFloatingTexts(initialTexts);
@@ -78,7 +78,7 @@ const BackgroundAnimation: React.FC = () => {
       );
     };
 
-    const intervalId = setInterval(animate, 50);
+    const intervalId = setInterval(animate, 60);
 
     const handleResize = () => {
       setFloatingTexts(prevTexts =>
@@ -100,10 +100,10 @@ const BackgroundAnimation: React.FC = () => {
 
   return (
     <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden">
-      {/* Subway Surfer video background */}
+      {/* Subway Surfer video background - more visible */}
       <div className="absolute inset-0 z-0">
         <video
-          className="object-cover w-full h-full opacity-20"
+          className="object-cover w-full h-full opacity-40"
           autoPlay
           loop
           muted
@@ -114,8 +114,11 @@ const BackgroundAnimation: React.FC = () => {
         </video>
       </div>
       
-      {/* Subtle grid overlay */}
-      <div className="absolute inset-0 bg-grid opacity-30"></div>
+      {/* Subtle gradient overlay for depth */}
+      <div className="absolute inset-0 bg-gradient-to-br from-slate-950/70 via-slate-950/50 to-slate-950/70"></div>
+      
+      {/* Ultra subtle grid pattern */}
+      <div className="absolute inset-0 bg-grid opacity-20"></div>
       
       {/* Floating subtle text */}
       {floatingTexts.map((text) => (
@@ -128,16 +131,16 @@ const BackgroundAnimation: React.FC = () => {
             opacity: text.opacity,
             fontSize: `${text.size}rem`,
             transform: `translateZ(0) rotate(${text.rotation}deg)`,
-            color: 'rgba(236, 72, 153, 0.3)',
-            fontWeight: '500',
+            color: 'rgba(236, 72, 153, 0.4)',
+            fontWeight: '400',
           }}
         >
           {text.text}
         </div>
       ))}
       
-      {/* Dark overlay for readability */}
-      <div className="absolute inset-0 bg-slate-950/60 pointer-events-none" />
+      {/* Refined overlay for perfect readability */}
+      <div className="absolute inset-0 bg-slate-950/40 pointer-events-none" />
     </div>
   );
 };

@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&display=swap');
 
 * {
@@ -18,20 +18,22 @@ body {
 
 /* Custom scrollbar */
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 10px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #1f2937;
+  background: #1e293b;
+  border-radius: 5px;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #4b5563;
-  border-radius: 4px;
+  background: #475569;
+  border-radius: 5px;
+  border: 2px solid #1e293b;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #6b7280;
+  background: #64748b;
 }
 
 /* Smooth scrolling */
@@ -60,7 +62,7 @@ html {
   color: #ec4899 !important;
 }
 
-/* Custom syntax highlighting for modern theme */
+/* Enhanced syntax highlighting for modern theme */
 .monaco-editor .mtk1 { color: #f1f5f9 !important; } /* Default text */
 .monaco-editor .mtk2 { color: #ec4899 !important; } /* Keywords */
 .monaco-editor .mtk3 { color: #06b6d4 !important; } /* Strings */
@@ -71,25 +73,26 @@ html {
 
 /* Modern card styles */
 .card {
-  @apply bg-slate-900/80 backdrop-blur-sm border border-slate-800 rounded-xl;
+  @apply bg-slate-900/80 backdrop-blur-sm border border-slate-800/50 rounded-2xl;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
 }
 
 .card-hover {
-  @apply transition-all duration-200 hover:bg-slate-900/90 hover:border-slate-700;
+  @apply transition-all duration-300 hover:bg-slate-900/90 hover:border-slate-700/50 hover:shadow-2xl hover:-translate-y-1;
 }
 
-/* Button styles */
+/* Enhanced button styles */
 .btn-primary {
-  @apply bg-pink-500 hover:bg-pink-600 text-white font-medium px-6 py-3 rounded-lg transition-all duration-200 hover:shadow-lg hover:shadow-pink-500/25;
+  @apply bg-pink-500 hover:bg-pink-600 text-white font-semibold px-8 py-4 rounded-xl transition-all duration-300 hover:shadow-xl hover:shadow-pink-500/25 hover:-translate-y-1;
 }
 
 .btn-secondary {
-  @apply bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 hover:border-slate-600 font-medium px-6 py-3 rounded-lg transition-all duration-200;
+  @apply bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 hover:border-slate-600 font-semibold px-8 py-4 rounded-xl transition-all duration-300 hover:shadow-lg;
 }
 
-/* Text styles */
+/* Enhanced text styles */
 .text-gradient {
-  @apply bg-gradient-to-r from-pink-400 to-pink-600 bg-clip-text text-transparent;
+  @apply bg-gradient-to-r from-pink-400 via-pink-500 to-pink-600 bg-clip-text text-transparent;
 }
 
 /* Animation keyframes */
@@ -102,10 +105,39 @@ html {
   animation: float 3s ease-in-out infinite;
 }
 
-/* Subtle background effects */
+/* Enhanced background effects */
 .bg-grid {
   background-image: 
-    linear-gradient(rgba(236, 72, 153, 0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(236, 72, 153, 0.03) 1px, transparent 1px);
-  background-size: 20px 20px;
+    linear-gradient(rgba(236, 72, 153, 0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(236, 72, 153, 0.02) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+/* Enhanced focus states */
+button:focus-visible,
+a:focus-visible {
+  @apply outline-none ring-2 ring-pink-500/50 ring-offset-2 ring-offset-slate-950;
+}
+
+/* Improved transitions */
+* {
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+
+/* Enhanced selection */
+::selection {
+  background-color: rgba(236, 72, 153, 0.3);
+  color: #f1f5f9;
+}
+
+/* Improved typography */
+h1, h2, h3, h4, h5, h6 {
+  letter-spacing: -0.025em;
+}
+
+/* Enhanced shadows */
+.shadow-glow {
+  box-shadow: 0 0 20px rgba(236, 72, 153, 0.15);
 }
