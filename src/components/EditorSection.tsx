@@ -82,7 +82,7 @@ Certified based ✅
   const handleEditorDidMount = (editor: monaco.editor.IStandaloneCodeEditor) => {
     editorRef.current = editor;
     
-    // Define custom OneDark-inspired theme
+    // Define custom OneDark theme
     monaco.editor.defineTheme('onedark-custom', {
       base: 'vs-dark',
       inherit: true,
