@@ -1,4 +1,4 @@
-import { Github, Play, Sparkles, ArrowRight, Star } from "lucide-react";
+import { Github, Play, Sparkles, ArrowRight } from "lucide-react";
 import React, { useEffect, useState } from "react";
 
 const Hero: React.FC = () => {
@@ -40,16 +40,16 @@ const Hero: React.FC = () => {
     }
   }, [currentSnippet, isTyping]);
 
+  const scrollToEditor = () => {
+    const editorSection = document.getElementById('playground');
+    if (editorSection) {
+      editorSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <section className="relative z-10 flex items-center justify-center min-h-screen px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto text-center">
-        {/* Hero Badge */}
-        <div className="inline-flex items-center px-4 py-2 mb-8 text-sm font-medium rounded-full bg-pink-500/10 border border-pink-500/20 text-pink-400">
-          <Star className="w-4 h-4 mr-2" />
-          The most cursed language ever created
-          <ArrowRight className="w-4 h-4 ml-2" />
-        </div>
-
         {/* Hero Title */}
         <div className="mb-10">
           <h1 className="mb-6 text-5xl font-bold sm:text-7xl lg:text-8xl leading-tight">
@@ -91,14 +91,16 @@ const Hero: React.FC = () => {
           </div>
         </div>
 
-        {/* CTA Buttons - Enhanced */}
+        {/* CTA Buttons - Enhanced with fixed hover */}
         <div className="flex flex-col items-center justify-center gap-6 mb-20 sm:flex-row">
-          <button className="group relative overflow-hidden bg-pink-500 hover:bg-pink-600 text-white font-semibold px-8 py-4 rounded-xl transition-all duration-300 hover:shadow-xl hover:shadow-pink-500/25 hover:-translate-y-1 text-lg">
-            <div className="flex items-center space-x-3">
+          <button 
+            onClick={scrollToEditor}
+            className="group relative overflow-hidden bg-pink-500 hover:bg-pink-600 font-semibold px-8 py-4 rounded-xl transition-all duration-300 hover:shadow-xl hover:shadow-pink-500/25 hover:-translate-y-1 text-lg"
+          >
+            <div className="flex items-center space-x-3 text-white relative z-10">
               <Play className="w-6 h-6 group-hover:scale-110 transition-transform duration-200" />
               <span>Try in Editor</span>
             </div>
-            <div className="absolute inset-0 bg-gradient-to-r from-pink-600 to-pink-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
           </button>
 
           <button className="group bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 hover:border-slate-600 font-semibold px-8 py-4 rounded-xl transition-all duration-300 hover:shadow-lg text-lg">
