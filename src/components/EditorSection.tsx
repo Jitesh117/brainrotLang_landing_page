@@ -82,16 +82,131 @@ Certified based ✅
   const handleEditorDidMount = async (editor: monaco.editor.IStandaloneCodeEditor) => {
     editorRef.current = editor;
     
-    // Import and define Dracula theme
-    try {
-      const { default: themes } = await import('monaco-themes/themes/Dracula.json');
-      monaco.editor.defineTheme('dracula', themes as any);
-      monaco.editor.setTheme('dracula');
-    } catch (error) {
-      console.error('Failed to load Dracula theme:', error);
-      // Fallback to vs-dark if Dracula fails to load
-      monaco.editor.setTheme('vs-dark');
-    }
+    // Define custom Dracula theme
+    monaco.editor.defineTheme('dracula', {
+      base: 'vs-dark',
+      inherit: true,
+      rules: [
+        { token: '', foreground: 'f8f8f2' },
+        { token: 'comment', foreground: '6272a4', fontStyle: 'italic' },
+        { token: 'keyword', foreground: 'ff79c6' },
+        { token: 'string', foreground: 'f1fa8c' },
+        { token: 'number', foreground: 'bd93f9' },
+        { token: 'regexp', foreground: 'f1fa8c' },
+        { token: 'type', foreground: '8be9fd' },
+        { token: 'function', foreground: '50fa7b' },
+        { token: 'variable', foreground: 'f8f8f2' },
+        { token: 'constant', foreground: 'bd93f9' },
+        { token: 'class', foreground: '8be9fd' },
+        { token: 'interface', foreground: '8be9fd' },
+        { token: 'namespace', foreground: 'f8f8f2' },
+        { token: 'property', foreground: 'f8f8f2' },
+        { token: 'operator', foreground: 'ff79c6' },
+        { token: 'tag', foreground: 'ff79c6' },
+        { token: 'attribute.name', foreground: '50fa7b' },
+        { token: 'attribute.value', foreground: 'f1fa8c' },
+        { token: 'delimiter', foreground: 'f8f8f2' }
+      ],
+      colors: {
+        'editor.background': '#282a36',
+        'editor.foreground': '#f8f8f2',
+        'editor.lineHighlightBackground': '#44475a',
+        'editor.selectionBackground': '#44475a',
+        'editor.inactiveSelectionBackground': '#44475a',
+        'editorCursor.foreground': '#f8f8f2',
+        'editorWhitespace.foreground': '#6272a4',
+        'editorIndentGuide.background': '#6272a4',
+        'editorIndentGuide.activeBackground': '#f8f8f2',
+        'editorGroupHeader.tabsBackground': '#21222c',
+        'editorGroup.border': '#6272a4',
+        'tab.activeBackground': '#282a36',
+        'tab.activeForeground': '#f8f8f2',
+        'tab.inactiveBackground': '#21222c',
+        'tab.inactiveForeground': '#6272a4',
+        'tab.border': '#191a21',
+        'panel.background': '#21222c',
+        'panel.border': '#44475a',
+        'panelTitle.activeBorder': '#ff79c6',
+        'panelTitle.activeForeground': '#f8f8f2',
+        'panelTitle.inactiveForeground': '#6272a4',
+        'terminal.background': '#282a36',
+        'terminal.foreground': '#f8f8f2',
+        'terminalCursor.background': '#282a36',
+        'terminalCursor.foreground': '#f8f8f2',
+        'terminal.ansiBlack': '#21222c',
+        'terminal.ansiBlue': '#bd93f9',
+        'terminal.ansiBrightBlack': '#6272a4',
+        'terminal.ansiBrightBlue': '#d6acff',
+        'terminal.ansiBrightCyan': '#a4ffff',
+        'terminal.ansiBrightGreen': '#69ff94',
+        'terminal.ansiBrightMagenta': '#ff92df',
+        'terminal.ansiBrightRed': '#ff6e6e',
+        'terminal.ansiBrightWhite': '#ffffff',
+        'terminal.ansiBrightYellow': '#ffffa5',
+        'terminal.ansiCyan': '#8be9fd',
+        'terminal.ansiGreen': '#50fa7b',
+        'terminal.ansiMagenta': '#ff79c6',
+        'terminal.ansiRed': '#ff5555',
+        'terminal.ansiWhite': '#f8f8f2',
+        'terminal.ansiYellow': '#f1fa8c',
+        'editorLineNumber.foreground': '#6272a4',
+        'editorLineNumber.activeForeground': '#f8f8f2',
+        'editorBracketMatch.background': '#6272a4',
+        'editorBracketMatch.border': '#f8f8f2',
+        'editor.findMatchBackground': '#ffb86c',
+        'editor.findMatchHighlightBackground': '#f1fa8c',
+        'editor.wordHighlightBackground': '#8be9fd',
+        'editor.wordHighlightStrongBackground': '#50fa7b',
+        'editorWidget.background': '#44475a',
+        'editorWidget.border': '#6272a4',
+        'editorSuggestWidget.background': '#44475a',
+        'editorSuggestWidget.border': '#6272a4',
+        'editorSuggestWidget.foreground': '#f8f8f2',
+        'editorSuggestWidget.highlightForeground': '#8be9fd',
+        'editorSuggestWidget.selectedBackground': '#6272a4',
+        'editorHoverWidget.background': '#44475a',
+        'editorHoverWidget.border': '#6272a4',
+        'debugExceptionWidget.background': '#44475a',
+        'debugExceptionWidget.border': '#6272a4',
+        'editorMarkerNavigation.background': '#44475a',
+        'editorMarkerNavigationError.background': '#ff5555',
+        'editorMarkerNavigationWarning.background': '#ffb86c',
+        'editorMarkerNavigationInfo.background': '#8be9fd',
+        'merge.currentHeaderBackground': '#50fa7b',
+        'merge.currentContentBackground': '#50fa7b',
+        'merge.incomingHeaderBackground': '#bd93f9',
+        'merge.incomingContentBackground': '#bd93f9',
+        'merge.border': '#6272a4',
+        'editorOverviewRuler.currentContentForeground': '#50fa7b',
+        'editorOverviewRuler.incomingContentForeground': '#bd93f9',
+        'editorOverviewRuler.commonContentForeground': '#6272a4',
+        'scrollbar.shadow': '#21222c',
+        'scrollbarSlider.background': '#6272a4',
+        'scrollbarSlider.hoverBackground': '#f8f8f2',
+        'scrollbarSlider.activeBackground': '#ff79c6',
+        'progressBar.background': '#ff79c6',
+        'widget.shadow': '#21222c',
+        'editorError.foreground': '#ff5555',
+        'editorWarning.foreground': '#ffb86c',
+        'editorInfo.foreground': '#8be9fd',
+        'editorHint.foreground': '#6272a4',
+        'editorGutter.background': '#282a36',
+        'editorGutter.modifiedBackground': '#ffb86c',
+        'editorGutter.addedBackground': '#50fa7b',
+        'editorGutter.deletedBackground': '#ff5555',
+        'minimapGutter.addedBackground': '#50fa7b',
+        'minimapGutter.modifiedBackground': '#ffb86c',
+        'minimapGutter.deletedBackground': '#ff5555',
+        'minimap.findMatchHighlight': '#f1fa8c',
+        'minimap.selectionHighlight': '#44475a',
+        'minimap.errorHighlight': '#ff5555',
+        'minimap.warningHighlight': '#ffb86c',
+        'minimap.background': '#282a36'
+      }
+    });
+    
+    // Apply the theme
+    monaco.editor.setTheme('dracula');
     
     // Initialize vim mode if enabled
     if (vimMode) {
