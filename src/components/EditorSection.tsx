@@ -79,8 +79,19 @@ Certified based ✅
   const editorRef = useRef<monaco.editor.IStandaloneCodeEditor | null>(null);
   const vimModeRef = useRef<any>(null);
 
-  const handleEditorDidMount = (editor: monaco.editor.IStandaloneCodeEditor) => {
+  const handleEditorDidMount = async (editor: monaco.editor.IStandaloneCodeEditor) => {
     editorRef.current = editor;
+    
+    // Import and define Dracula theme
+    try {
+      const { default: themes } = await import('monaco-themes/themes/Dracula.json');
+      monaco.editor.defineTheme('dracula', themes as any);
+      monaco.editor.setTheme('dracula');
+    } catch (error) {
+      console.error('Failed to load Dracula theme:', error);
+      // Fallback to vs-dark if Dracula fails to load
+      monaco.editor.setTheme('vs-dark');
+    }
     
     // Initialize vim mode if enabled
     if (vimMode) {
@@ -268,7 +279,7 @@ Certified based ✅
                 value={code}
                 onChange={(value) => setCode(value || "")}
                 onMount={handleEditorDidMount}
-                theme="vs-dark"
+                theme="dracula"
                 options={{
                   fontSize: 15,
                   fontFamily: "JetBrains Mono, Consolas, Monaco, monospace",
